@@ -1,0 +1,11 @@
+{
+    "IMPORTANT NOTICE!": "This file is no longer used for anything. Use custom.yaml for main configuration.",
+    "enabled": true,
+    "mods": {
+        "modName": {
+            "enabled": true,
+            "value1": 2,
+            "value2": "string"
+        }
+    }
+}

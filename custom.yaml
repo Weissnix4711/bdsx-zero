@@ -1,0 +1,67 @@
+# ---------------------------------------------------------------------------- #
+#                            Main Configuration File                           #
+# ---------------------------------------------------------------------------- #
+# Make sure at least one mod exists and has a configuration below, otherwise   #
+# the script will not work. It doesn't have to be enabled or disabled, it only #
+# needs a configuration section.
+# ---------------------------------------------------------------------------- #
+
+# --------------------------------- Overrides -------------------------------- #
+
+# Enabled all mods. If disabled, will be vanilla.
+enabled: true
+# Default enable scripts if you forget to add the 'enabled' key.
+# Note: This feature is only (somewhat) functional.
+defaultEnabled: true
+
+# ----------------------------------- Mods ----------------------------------- #
+
+mods:
+  # CUSTOM CHAT
+  # Capitalises messages and adds trailing '.'
+  customChat:
+    enabled: true
+  # DISCORD INTEGRATION
+  # Edit token, channel and formats as desired.
+  discordBridge:
+    enabled: true
+    loginToken: "YOURTOKENHERE"
+    channel: "123456789012345678"
+    connections:
+      enabled: true
+      format:
+        connect: "Player join: '${username}'. XUID: ${xuid}."
+        disconnect: "${username} disconnected."
+    chat:
+      fromGame:
+        enabled: true
+        format: "${username} >> ${message}"
+      fromDiscord:
+        enabled: true
+        format: "(DISCORD) <${username}> ${message}"
+  # LOGGER
+  # Optionally, change log date format.
+  logger:
+    enabled: true
+    logWithDateFormat: >-
+      ${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()} ${('0' + now.getHours()).substr(-2)}
+      :${now.getMinutes()}
+      :${('0' + now.getSeconds()).substr(-2)}
+  # ANTI LAG
+  # Timers in seconds
+  antiLag:
+    enabled: true
+    clearGroundItems:
+      enabled: true
+      interval: 600
+      warning: 30
+  # CONSOLE COLOURS
+  # Adds colours to console. Note: displayCode keeps the original code (§x), in dark gray.
+  consoleColours:
+    enabled: true
+    displayCode: true
+  # JS COMMAND
+  jsCommand:
+    enabled: true
+
+# ---------------------------------------------------------------------------- #
