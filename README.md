@@ -22,7 +22,7 @@ Add your files to `src/mods/` dir, then build.
 
 #### JSON and YAML files
 
-If your script requires a `.json` file too (eg. for it's own configuration) then you can add this too in `src/mod/`. It will get copied when you `npm run build`. Please note, any edits to these files will not get copied by `build:watch`. You *must* run `build`.
+If your script requires a `.json` file too (eg. for it's own configuration) then you can add this too in `src/mods/`. It will get copied when you `npm run build`. Please note, any edits to these files will not get copied by `build:watch`. You *must* run `build`.
 
 ### Build
 
@@ -40,5 +40,5 @@ Note: this is not recommended as you can only install one version of bdsx global
 
 ## Planned features / current limitations
 
-- `custom.yaml` should auto fill with any scripts found in the `mods/` dir.
+- `custom.yaml` should auto fill with any scripts found in the `src/mods/` dir.
 - The `defaultEnabled` feature doesn't currently work as expected.
