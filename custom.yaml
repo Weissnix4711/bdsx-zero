@@ -41,12 +41,15 @@ mods:
         format: "(DISCORD) <${username}> ${message}"
   # LOGGER
   # Optionally, change log date format.
+  # Note: if you get unusual wine errors, try using 'getUTCFullYear()', etc.
   logger:
     enabled: true
-    logWithDateFormat: >-
-      ${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()} ${('0' + now.getHours()).substr(-2)}
-      :${now.getMinutes()}
-      :${('0' + now.getSeconds()).substr(-2)}
+    logWithDateFormat: "${now.getFullYear()}-\
+      ${('0' + (now.getMonth() + 1)).substr(-2)}-\
+      ${('0' + now.getDate()).substr(-2)} \
+      ${('0' + now.getHours()).substr(-2)}\
+      :${('0' + now.getMinutes()).substr(-2)}\
+      :${('0' + now.getSeconds()).substr(-2)}"
   # ANTI LAG
   # Timers in seconds
   antiLag:
