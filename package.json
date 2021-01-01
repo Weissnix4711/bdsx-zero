@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/Weissnix4711/bdsx-zero#readme",
   "dependencies": {
-    "bdsx": "^1.3.48",
+    "bdsx": "^1.3.53",
     "discord.js": "^11.6.4",
     "typescript": "^4.1.2",
     "yaml": "^1.10.0"
