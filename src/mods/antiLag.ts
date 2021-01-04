@@ -22,6 +22,9 @@ const config = C.readConfig().mods.antiLag
 
 /* -------------------------------- Functions ------------------------------- */
 
+/**
+ * Clear all ground items immediately.
+ */
 export const clearGroundItemsNow = async () => {
   logWithDate('Clearing ground items..', 'antiLag');
   system.executeCommand('tellraw @a {"rawtext":[{"text":"[antiLag] Clearing ground items now.."}]}', () => {});
@@ -29,6 +32,9 @@ export const clearGroundItemsNow = async () => {
   logWithDate('Cleared ground items', 'antiLag');
 }
 
+/**
+ * Clear ground items after set period of time. Displays warning in chat too.
+ */
 export const clearGroundItems = async () => {
   system.executeCommand(`tellraw @a {"rawtext":[{"text":"[antiLag] Clearing ground items in ${config.clearGroundItems.warning} seconds.."}]}`, () => {});
   setTimeout(clearGroundItemsNow, (config.clearGroundItems.warning * 1000));
@@ -39,7 +45,11 @@ export const clearGroundItems = async () => {
 (async () => {
 
   if (config.clearGroundItems.enabled === true) {
-    setInterval(clearGroundItems, (config.clearGroundItems.interval * 1000));
+    const interval = setInterval(clearGroundItems, (config.clearGroundItems.interval * 1000));
+    system.shutdown = () => {
+      logWithDate('Server shutting down. Clearing interval.', 'antiLag');
+      clearInterval(interval);
+    }
   }
 
 /* -------------------------------------------------------------------------- */
