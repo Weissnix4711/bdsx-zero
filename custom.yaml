@@ -66,5 +66,9 @@ mods:
   # JS COMMAND
   jsCommand:
     enabled: true
+  # ANTI CLIENT COMMANDS
+  # Warning: doesn't always work.
+  antiClientCommands:
+    enabled: true
 
 # ---------------------------------------------------------------------------- #
