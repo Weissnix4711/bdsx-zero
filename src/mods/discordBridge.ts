@@ -34,13 +34,25 @@ import { logWithDate } from './logger';
   // Client
   const client = new Discord.Client();
 
-  // Channel (in which messages are sent)
+  // Channels
   var channel: Discord.TextChannel;
+  var connectionChannel: Discord.TextChannel;
 
   // On bot becoming ready
   client.once('ready', () => {
     logWithDate('Login successful. Bot enabled.', 'discordBridge')
+
+    // Channel
     channel = client.channels.get(config.channel) as Discord.TextChannel;
+
+    // Channel for connection messages only
+    if (typeof config.connections.channel == 'string') {
+      connectionChannel = client.channels.get(config.connections.channel) as Discord.TextChannel;
+    } else {
+      connectionChannel = channel;
+    }
+
+    // Initialised
     channel.send('Server initialised!');
   });
 
@@ -59,6 +71,7 @@ import { logWithDate } from './logger';
 /* --------------------- Connections and disconnections --------------------- */
 
   if (config.connections.enabled === true) {
+
     // Enabled
     logWithDate('Enabled Connection logs!', 'discordBridge');
 
@@ -68,7 +81,7 @@ import { logWithDate } from './logger';
       const ip = networkIdentifier.getAddress();
       const [xuid, username] = netevent.readLoginPacket(ptr);
       // Log and sent to discord
-      channel.send(eval('`' + config.connections.format.connect + '`'));
+      connectionChannel.send(eval('`' + config.connections.format.connect + '`'));
       logWithDate(eval('`' + config.connections.format.connect + '`'), 'discordBridge');
       // Add username to connectionList
       if (username) connectionList.set(networkIdentifier, username);
@@ -81,7 +94,7 @@ import { logWithDate } from './logger';
       connectionList.delete(networkIdentifier);
       // Log and send to discord
       logWithDate(eval('`' + config.connections.format.disconnect + '`'), 'discordBridge');
-      channel.send(eval('`' + config.connections.format.disconnect + '`'));
+      connectionChannel.send(eval('`' + config.connections.format.disconnect + '`'));
     });
   }
 

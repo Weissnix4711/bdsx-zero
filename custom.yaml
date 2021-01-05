@@ -23,12 +23,15 @@ mods:
     enabled: true
   # DISCORD INTEGRATION
   # Edit token, channel and formats as desired.
+  # Note: connections has a seperate channel if you wish to seperate these messages
+  # from the chat bridge.
   discordBridge:
     enabled: true
     loginToken: "YOURTOKENHERE"
     channel: "123456789012345678"
     connections:
       enabled: true
+      channel: "123456789012345678"
       format:
         connect: "Player join: '${username}'. XUID: ${xuid}."
         disconnect: "${username} disconnected."
