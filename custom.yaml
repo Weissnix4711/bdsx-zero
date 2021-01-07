@@ -73,5 +73,9 @@ mods:
   # Warning: doesn't always work.
   antiClientCommands:
     enabled: true
+  # DEBUG MODE
+  # Log packets to console
+  debugMode:
+    enabled: true
 
 # ---------------------------------------------------------------------------- #
