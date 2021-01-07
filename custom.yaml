@@ -77,5 +77,8 @@ mods:
   # Log packets to console
   debugMode:
     enabled: true
+  # ATTACK PARTICLES
+  attackParticles:
+    enabled: true
 
 # ---------------------------------------------------------------------------- #
